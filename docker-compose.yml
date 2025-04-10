@@ -1,0 +1,25 @@
+services:
+  python-app:
+    image: python:3.12-slim
+    container_name: python-container
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
+    command: ["/bin/bash", "./run.sh"]
+    environment:
+      ST_MODEL_NAME: ${ST_MODEL_NAME}
+      MTL_MODEL_NAME: ${MTL_MODEL_NAME}
+      LEARNING_RATE: ${LEARNING_RATE}
+      EPOCHS: ${EPOCHS}
+      BATCH_SIZE: ${BATCH_SIZE}
+      MAX_LEN: ${MAX_LEN}
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,8 @@
+datasets
+hf-xet
+numpy
+scikit-learn
+torch
+tqdm
+transformers
+
